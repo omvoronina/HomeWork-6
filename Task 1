@@ -1,0 +1,55 @@
+# 1. Подсчитать, сколько было выделено памяти под переменные в ранее разработанных программах в рамках первых трех уроков.
+# Проанализировать результат и определить программы с наиболее эффективным использованием памяти.
+# Примечание: Для анализа возьмите любые 1-3 ваших программы или несколько вариантов кода для одной и той же задачи.
+# Результаты анализа вставьте в виде комментариев к коду. Также укажите в комментариях версию Python и разрядность вашей ОС.
+# Версия Python 3.9, 64-разрядная операционная система
+
+import sys
+
+
+# 1. Найти сумму и произведение цифр трехзначного числа, которое вводит пользователь.
+numb = input('Введите трехзначное число  ')
+res = sum(map(int, numb))
+print(f'Сумма цифр числа {numb} равна {res} ')
+mult = 1
+for i in numb:
+    i = int(i)
+    mult = mult * i
+print(f'Произведение цифр числа {numb} равно {mult} ')
+print(sys.getsizeof(numb) + sys.getsizeof(res) + sys.getsizeof(mult))
+
+
+numb = [int(char) for char in input('Введите трехзначное число  ')]
+print(sum(numb))
+print([numb[0] * numb[1] * numb[2] for i in numb][0])
+print(sys.getsizeof(numb))
+
+import math
+
+print(math.prod([int(char) for char in input('Введите трехзначное число  ')]))
+
+
+
+# 5. Пользователь вводит две буквы. Определить, на каких местах алфавита они стоят и сколько между ними
+# находится букв.
+
+import sys
+import random
+
+
+let_1 = input('Введите первую букву  ')
+let_2 = input('Введите вторую букву  ')
+place_1 = ord(let_1) - 96
+place_2 = ord(let_2) - 96
+interval = abs(place_2 - place_1) - 1
+print(f" Буква {let_1} стоит на {place_1} месте алфавита, буква {let_2} стоит на {place_2} месте алфавита, "
+      f" Расстояние между буквами {let_1} и {let_2} равно {interval}" )
+print(f'Занимаемый объем {sys.getsizeof(let_1) + sys.getsizeof(let_2) + sys.getsizeof(place_1) + sys.getsizeof(place_2) + sys.getsizeof(interval)}')
+
+
+let_1 = input('Введите первую букву  ')
+let_2 = input('Введите вторую букву  ')
+print(f" Буква {let_1} стоит на {ord(let_1) - 96} месте алфавита, буква {let_2} стоит на {ord(let_2) - 96} месте алфавита, "
+      f" Расстояние между буквами {let_1} и {let_2} равно {abs(ord(let_2) - ord(let_1) - 1)} " )
+print(f'Занимаемый объем {sys.getsizeof(let_1) + sys.getsizeof(let_2)}')
+
